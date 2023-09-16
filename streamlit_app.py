@@ -1,13 +1,13 @@
 import streamlit as st
+import bcrypt
+from pymongo import MongoClient
 
 st.set_page_config(page_title = "Donaste",
                    page_icon = "#",)
 st.title("Welcome to Donaste")
 st.sidebar.success("Select a page")
 
-import streamlit as st
-import bcrypt
-from pymongo import MongoClient
+
 
 # Connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
