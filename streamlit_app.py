@@ -1,40 +1,70 @@
 import streamlit as st
-# import pymongo
 
+st.set_page_config(page_title = "Donaste",
+                   page_icon = "#",)
+st.title("Welcome to Donaste")
+st.sidebar.success("Select a page")
 
+import streamlit as st
+import bcrypt
+from pymongo import MongoClient
 
-# # Replace <connection_string> with your MongoDB connection string
-# client = pymongo.MongoClient("<connection_string>")
-# db = client["your_database_name"]
-# user_collection = db.create_collection("users")
+# Connect to MongoDB
+client = MongoClient("mongodb://localhost:27017/")
+db = client["user_database"]
+users_collection = db["users"]
 
-# Streamlit registration form
-st.title("User Registration")
-name = st.text_input("Name")
-email = st.text_input("Email")
-password = st.text_input("Password", type="password")
-confirm_password = st.text_input("Confirm Password", type="password")
+# Login form
+def login():
+    st.header("Login")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
 
-if st.button("Register"):
-    if password == confirm_password:
-        user = {
-            "name": name,                                                                            
+    if st.button("Login"):
+        # Retrieve user details from the database
+        user = users_collection.find_one({"username": username})
+
+        if user:
+            # Verify the password
+            if bcrypt.checkpw(password.encode('utf-8'), user['password']):
+                st.success("Logged in as {}".format(username))
+                # Redirect to the desired page
+            else:
+                st.error("Invalid username or password")
+        else:
+            st.error("Invalid username or password")
+
+# Sign-up form
+def signup():
+    st.header("Sign Up")
+    username = st.text_input("Username")
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Sign Up"):
+        # Hash the password
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+        # Insert user details into the database
+        user_data = {
+            "username": username,
             "email": email,
-            "password": password
+            "password": hashed_password
         }
-        user_collection.insert_one(user)
-        st.success("Registration successful!")
-    else:
-        st.error("Passwords do not match!")
-# Streamlit login form
+        users_collection.insert_one(user_data)
+        st.success("Successfully registered!")
 
-st.title("User Login")
-email = st.text_input("Email")
-password = st.text_input("Password", type="password")
+# Run the Streamlit app
+def main():
+    st.title("User Authentication")
 
-if st.button("Login"):
-    user = user_collection.find_one({"email": email})
-    if user and user["password"] == password:
-        st.success("Login successful!")
-    else:
-        st.error("Invalid credentials!")
+    # Display the login or sign-up form based on user selection
+    form_choice = st.radio("Select an option:", ("Login", "Sign Up"))
+
+    if form_choice == "Login":
+        login()
+    elif form_choice == "Sign Up":
+        signup()
+
+if __name__ == '__main__':
+    main()
