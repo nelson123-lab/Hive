@@ -2,6 +2,8 @@ import streamlit as st
 from pymongo import MongoClient
 import io 
 from PIL import Image
+import base64
+# from streamlit-geocoder import st_geocoder
 
 # Title
 st.title("Donate an Item")
@@ -16,10 +18,9 @@ users_collection = db["donations"]
 name = st.text_input("Name")
 item = st.text_input("Item Name")
 count = st.number_input("Count", min_value=1, step=1)
-category = st.selectbox("Category", ["Electronics", "Clothing", "Food", "Other"])
+category = st.selectbox("Category", ["Clothing", "Electronics", "Furniture","Food" ,"Other"])
 photos = st.file_uploader("Upload Photos", accept_multiple_files=True)
 location = st.text_input("Location")
-
 
 
 if st.button("Submit"):
@@ -32,11 +33,11 @@ if st.button("Submit"):
         for photo in photos:
             st.image(photo, caption=f"Uploaded by {name}", use_column_width=True)
             image = Image.open(photo)
-            with io.bytesIO() as output:
+            with io.BytesIO() as output:
                 image.save(output, format = 'png')
                 binary = output.getvalue()
-            
-            photo_binary.append(binary)
+            info = base64.b64encode(binary).decode('utf-8')
+            photo_binary.append(info)
     
     user_data = {
         "Name:", name,
@@ -48,6 +49,7 @@ if st.button("Submit"):
         "Flag:", 1
     }
     users_collection.insert_one(user_data)
+    st.success("Successfully added")
 
             
             
