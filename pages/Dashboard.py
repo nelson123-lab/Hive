@@ -22,10 +22,31 @@ def donor_template(data):
 
 # Title and distance filter
 st.title("Donors Gallery")
-max_distance = st.slider("Maximum Distance (in km)", min_value=0, max_value=100, value=10)
 
-# Display donors within the specified distance from the current location
-donors_within_distance = users_collection.find({"location": {"$lte": max_distance}}, {"_id": 0, "name": 1, "item": 1, "location": 1, "contact": 1, "photos": 1})
+def main():
+    # Set the page layout to center the buttons
+    with open('style.css') as f:
+            st.markdown('<style>(f.read())</style>', unsafe_allow_html=True)
+
+    # Add the donate button
+    if st.button("Donate an Item", key="donate_button"):
+        # Add your donate button logic here
+        st.write("Donate button clicked!")
+
+    # Add some space between the buttons
+    st.markdown('<div style="height: 20px;"></div>', unsafe_allow_html=True)
+
+    # Add the receive button
+    if st.button("Receive an Item", key="receive_button"):
+        # Add your receive button logic here
+        st.write("Receive button clicked!")
+
+    # Close the container div
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# if __name__ == "__main__":
+#     main()
+
 
 for data in donors_within_distance:
     st.write("Donor Details:")
