@@ -48,13 +48,13 @@ if st.button("Submit"):
             photo_binary.append(info)
     
     user_data = {
-        "Name:", name,
-        "Item:", item,
-        "Count:", count,
-        "Category:", category,
-        "Location:", (latitude, longitude),
-        "Image:",photo_binary,
-        "Flag:", 1
+        "Name": name,
+        "Item": item,
+        "Count": count,
+        "Category": category,
+        "Location": (latitude, longitude),
+        "Image": photo_binary,
+        "Flag": 1
     }
     users_collection.insert_one(user_data)
     st.success("Successfully added")
