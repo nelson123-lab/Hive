@@ -37,7 +37,6 @@ if st.button("Submit"):
     # Display uploaded photos
     if photos:
 
-        st.write("Photos:")
         for photo in photos:
             # st.image(photo, caption=f"Uploaded by {name}", use_column_width=True)
             image = Image.open(photo)
