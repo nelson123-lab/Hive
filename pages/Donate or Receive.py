@@ -1,5 +1,8 @@
 import streamlit as st
 
+
+c1, c2, c3 = st.columns(3)
+
 def main():
     # Set the page layout to center the buttons
     with open('style.css') as f:
