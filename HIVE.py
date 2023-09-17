@@ -9,9 +9,6 @@ from streamlit.source_util import _on_pages_changed, get_pages
 DEFAULT_PAGE = "HIVE.py"
 SECOND_PAGE_NAME = "Dashboard"
 
-# session state 
-if "logged_in" not in st.session_state:
-    st.session_state["logged_in"] = False
 
 # all pages request
 def get_all_pages():

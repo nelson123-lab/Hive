@@ -26,9 +26,9 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 
 # Connect to MongoDB (replace with your MongoDB connection details)
-client = MongoClient("mongodb://your_username:your_password@your_mongodb_host:27017/")
-db = client["your_database_name"]
-users_collection = db["your_collection_name"]
+client = MongoClient("mongodb://admin:admin@your_mongodb_host:27017/")
+db = client["Donate_app"]
+users_collection = db["donations"]
 
 # Title
 st.title("Item Search")
