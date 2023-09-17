@@ -68,22 +68,3 @@ for result in results:
     st.write("Contact:", result["contact"])
     st.image(Image.open(io.BytesIO(result["photo"])), use_column_width=True)
     st.write("-" * 50)  # Add a separator line between entries
-
-
-# # Perform the search
-# if search_query:
-#     results = collection.find({"$text": {"$search": search_query}})
-    
-#     # Display search results
-#     st.subheader("Search Results:")
-    
-#     for result in results:
-#         st.write("Name:", result["name"])
-#         st.write("Item:", result["item"])
-#         st.write("Location:", result["location"])
-#         st.write("Contact:", result["contact"])
-        
-#         # Display the image
-#         st.image(Image.open(io.BytesIO(result["photo"])), use_column_width=True)
-        
-#         st.write("-" * 50)  # Add a separator line between entries

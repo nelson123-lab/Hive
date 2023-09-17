@@ -69,7 +69,7 @@ def hide_page(name: str):
 # calling only default(login) page  
 clear_all_but_first_page()
 
-st.image('HIVE.jpg', use_column_width=True)
+st.image('HIVE.png', use_column_width=True)
 st.title("Welcome to Hive")
 # st.sidebar.success("Select a page")
 
