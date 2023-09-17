@@ -69,19 +69,6 @@ def hide_page(name: str):
 # calling only default(login) page  
 clear_all_but_first_page()
 
-# st.set_page_config(page_title="Hive", page_icon="#",)
-# st.set_page_config(initial_sidebar_state="collapsed")
-
-# st.markdown(
-#     """
-# <style>
-#     [data-testid="collapsedControl"] {
-#         display: none
-#     }
-# </style>
-# """,
-#     unsafe_allow_html=True,
-# )
 st.image('HIVE.jpg', use_column_width=True)
 st.title("Welcome to Hive")
 # st.sidebar.success("Select a page")
