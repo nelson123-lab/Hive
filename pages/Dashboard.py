@@ -44,17 +44,17 @@ def main():
     # Close the container div
     st.markdown('</div>', unsafe_allow_html=True)
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 
 
-for data in donors_within_distance:
-    st.write("Donor Details:")
-    donor_info = donor_template(data)
-    st.markdown(donor_info)
+# for data in donors_within_distance:
+#     st.write("Donor Details:")
+#     donor_info = donor_template(data)
+#     st.markdown(donor_info)
     
-    st.write("Donor Images:")
-    for photo_data in data["photos"]:
-        st.image(Image.open(io.BytesIO(photo_data)), use_column_width=True)
+#     st.write("Donor Images:")
+#     for photo_data in data["photos"]:
+#         st.image(Image.open(io.BytesIO(photo_data)), use_column_width=True)
     
-    st.write("-" * 50)  # Add a separator line between entries
+#     st.write("-" * 50)  # Add a separator line between entries
