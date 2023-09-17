@@ -2,16 +2,15 @@ import streamlit as st
 import bcrypt
 from pymongo import MongoClient
 
-st.set_page_config(page_title = "Donaste",
-                   page_icon = "#",)
-st.title("Welcome to Donaste")
+st.set_page_config(page_title = "Hive", page_icon = "#",)
+st.title("Welcome to Hive")
 st.sidebar.success("Select a page")
 
 
-
+uri = "mongodb+srv://hasnainbharmal4:samu@donate.f4lgt98.mongodb.net/?retryWrites=true&w=majority"
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")
-db = client["user_database"]
+client = MongoClient(uri)
+db = client["Donate_app"]
 users_collection = db["users"]
 
 # Login form
@@ -56,7 +55,6 @@ def signup():
 
 # Run the Streamlit app
 def main():
-    st.title("User Authentication")
 
     # Display the login or sign-up form based on user selection
     form_choice = st.radio("Select an option:", ("Login", "Sign Up"))
