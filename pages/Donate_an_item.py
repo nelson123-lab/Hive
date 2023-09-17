@@ -1,41 +1,27 @@
 import streamlit as st
 
-def main():
-    # Set the page layout to center the buttons
-    st.markdown(
-        """
-        <style>
-        .center {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .button {
-            margin: 10px;
-            padding: 20px;
-            font-size: 24px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+# Title
+st.title("Donate an Item")
 
-    # Create a container div with the center class
-    st.markdown('<div class="center">', unsafe_allow_html=True)
+# Create a form to collect user inputs
+name = st.text_input("Name")
+item = st.text_input("Item Name")
+count = st.number_input("Count", min_value=1, step=1)
+category = st.selectbox("Category", ["Electronics", "Clothing", "Food", "Other"])
+photos = st.file_uploader("Upload Photos", accept_multiple_files=True)
+location = st.text_input("Location")
 
-    # Add the donate button
-    st.markdown('<button class="button">Donate</button>', unsafe_allow_html=True)
-
-    # Add some space between the buttons
-    st.markdown('<div style="height: 20px;"></div>', unsafe_allow_html=True)
-
-    # Add the receive button
-    st.markdown('<button class="button">Receive</button>', unsafe_allow_html=True)
-
-    # Close the container div
-    st.markdown('</div>', unsafe_allow_html=True)
-
-if __name__ == "__main__":
-    main()
+# Submit button
+if st.button("Submit"):
+    st.success("Form Submitted Successfully!")
+    st.write("Name:", name)
+    st.write("Item:", item)
+    st.write("Count:", count)
+    st.write("Category:", category)
+    st.write("Location:", location)
+    
+    # Display uploaded photos
+    if photos:
+        st.write("Photos:")
+        for photo in photos:
+            st.image(photo, caption=f"Uploaded by {name}", use_column_width=True)
