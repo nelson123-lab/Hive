@@ -3,6 +3,8 @@ from pymongo import MongoClient
 import io 
 from PIL import Image
 import base64
+import geocoder
+
 # from streamlit-geocoder import st_geocoder
 
 # Title
@@ -20,7 +22,15 @@ item = st.text_input("Item Name")
 count = st.number_input("Count", min_value=1, step=1)
 category = st.selectbox("Category", ["Clothing", "Electronics", "Furniture","Food" ,"Other"])
 photos = st.file_uploader("Upload Photos", accept_multiple_files=True)
-location = st.text_input("Location")
+# location = st.text_input("Location")
+
+
+# Get the user's location
+g = geocoder.ip('me')
+latitude, longitude = g.latlng[0], g.latlng[1]
+
+# Display the location data
+st.write(f"Detected Location = Latitude {latitude}, Longitude {longitude}")
 
 
 if st.button("Submit"):
@@ -31,7 +41,7 @@ if st.button("Submit"):
 
         st.write("Photos:")
         for photo in photos:
-            st.image(photo, caption=f"Uploaded by {name}", use_column_width=True)
+            # st.image(photo, caption=f"Uploaded by {name}", use_column_width=True)
             image = Image.open(photo)
             with io.BytesIO() as output:
                 image.save(output, format = 'png')
@@ -44,7 +54,7 @@ if st.button("Submit"):
         "Item:", item,
         "Count:", count,
         "Category:", category,
-        "Location:", location,
+        "Location:", (latitude, longitude),
         "Image:",photo_binary,
         "Flag:", 1
     }

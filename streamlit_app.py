@@ -2,7 +2,9 @@ import streamlit as st
 import bcrypt
 from pymongo import MongoClient
 
+
 st.set_page_config(page_title="Hive", page_icon="#",)
+st.image('HIVE.jpg', use_column_width=True)
 st.title("Welcome to Hive")
 st.sidebar.success("Select a page")
 
