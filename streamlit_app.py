@@ -2,10 +2,9 @@ import streamlit as st
 import bcrypt
 from pymongo import MongoClient
 
-st.set_page_config(page_title = "Hive", page_icon = "#",)
+st.set_page_config(page_title="Hive", page_icon="#",)
 st.title("Welcome to Hive")
 st.sidebar.success("Select a page")
-
 
 uri = "mongodb+srv://hasnainbharmal4:samu@donate.f4lgt98.mongodb.net/?retryWrites=true&w=majority"
 # Connect to MongoDB
@@ -55,9 +54,8 @@ def signup():
 
 # Run the Streamlit app
 def main():
-
     # Display the login or sign-up form based on user selection
-    form_choice = st.radio("Select an option:", ("Login", "Sign Up"))
+    form_choice = st.selectbox("Select an option:", ("Login", "Sign Up"))
 
     if form_choice == "Login":
         login()
