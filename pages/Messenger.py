@@ -4,7 +4,7 @@ user_input = st.text_area("Enter your message", value="", height=100)
 send_button = st.button("Send")
 
 def generate_response(user_input):
-    return "fuck you"
+    return "Please wait for the reply"
 if send_button:
     # Process the user's message here
     # You can add your logic to handle the message and generate a response

@@ -1,22 +1,87 @@
 import streamlit as st
 import bcrypt
+from pathlib import Path
+import json
 from pymongo import MongoClient
 from streamlit_extras.switch_page_button import switch_page
+from streamlit.source_util import _on_pages_changed, get_pages
 
+DEFAULT_PAGE = "HIVE.py"
+SECOND_PAGE_NAME = "Dashboard"
+
+# session state 
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
+
+# all pages request
+def get_all_pages():
+    default_pages = get_pages(DEFAULT_PAGE)
+
+    pages_path = Path("pages.json")
+
+    if pages_path.exists():
+        saved_default_pages = json.loads(pages_path.read_text())
+    else:
+        saved_default_pages = default_pages.copy()
+        pages_path.write_text(json.dumps(default_pages, indent=4))
+
+    return saved_default_pages
+
+# clear all page but not login page
+def clear_all_but_first_page():
+    current_pages = get_pages(DEFAULT_PAGE)
+
+    if len(current_pages.keys()) == 1:
+        return
+
+    get_all_pages()
+
+    # Remove all but the first page
+    key, val = list(current_pages.items())[0]
+    current_pages.clear()
+    current_pages[key] = val
+
+    _on_pages_changed.send()
+
+# show all pages
+def show_all_pages():
+    current_pages = get_pages(DEFAULT_PAGE)
+
+    saved_pages = get_all_pages()
+
+    # Replace all the missing pages
+    for key in saved_pages:
+        if key not in current_pages:
+            current_pages[key] = saved_pages[key]
+
+    _on_pages_changed.send()
+
+# Hide default page
+def hide_page(name: str):
+    current_pages = get_pages(DEFAULT_PAGE)
+
+    for key, val in current_pages.items():
+        if val["page_name"] == name:
+            del current_pages[key]
+            _on_pages_changed.send()
+            break
+
+# calling only default(login) page  
+clear_all_but_first_page()
 
 # st.set_page_config(page_title="Hive", page_icon="#",)
-st.set_page_config(initial_sidebar_state="collapsed")
+# st.set_page_config(initial_sidebar_state="collapsed")
 
-st.markdown(
-    """
-<style>
-    [data-testid="collapsedControl"] {
-        display: none
-    }
-</style>
-""",
-    unsafe_allow_html=True,
-)
+# st.markdown(
+#     """
+# <style>
+#     [data-testid="collapsedControl"] {
+#         display: none
+#     }
+# </style>
+# """,
+#     unsafe_allow_html=True,
+# )
 st.image('HIVE.jpg', use_column_width=True)
 st.title("Welcome to Hive")
 # st.sidebar.success("Select a page")
@@ -26,6 +91,7 @@ uri = "mongodb+srv://hasnainbharmal4:samu@donate.f4lgt98.mongodb.net/?retryWrite
 client = MongoClient(uri)
 db = client["Donate_app"]
 users_collection = db["users"]
+
 
 # Login form
 def login():
@@ -40,13 +106,18 @@ def login():
         if user:
             # Verify the password
             if bcrypt.checkpw(password.encode('utf-8'), user['password']):
-                st.success("Logged in as {}".format(username))
+                st.success("Logged In Sucessfully {}".format(username))
                 # Redirect to the desired page
-                switch_page("Dashboard")
+                show_all_pages()  # call all page
+                hide_page(DEFAULT_PAGE.replace(".py", ""))  # hide first page
+                switch_page(SECOND_PAGE_NAME)   # switch to second page
+                # switch_page("Dashboard")
             else:
                 st.error("Invalid username or password")
+                clear_all_but_first_page()  # clear all page but show first page
         else:
             st.error("Invalid username or password")
+            clear_all_but_first_page()  # clear all page but show first page
 
 # Sign-up form
 def signup():
@@ -77,6 +148,7 @@ def main():
         login()
     elif form_choice == "Sign Up":
         signup()
+
 
 if __name__ == '__main__':
     main()

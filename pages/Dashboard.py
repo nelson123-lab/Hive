@@ -2,6 +2,7 @@ import streamlit as st
 from pymongo import MongoClient
 from PIL import Image
 import io
+from streamlit_extras.switch_page_button import switch_page
 
 uri = "mongodb+srv://admin:admin@donate.f4lgt98.mongodb.net/?retryWrites=true&w=majority"
 # Connect to MongoDB
@@ -31,15 +32,15 @@ def main():
     # Add the donate button
     if st.button("Donate an Item", key="donate_button"):
         # Add your donate button logic here
-        st.write("Donate button clicked!")
+        switch_page("Donate an item")
 
     # Add some space between the buttons
-    st.markdown('<div style="height: 20px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height: 30px;"></div>', unsafe_allow_html=True)
 
     # Add the receive button
     if st.button("Receive an Item", key="receive_button"):
         # Add your receive button logic here
-        st.write("Receive button clicked!")
+        switch_page("Search an item")
 
     # Close the container div
     st.markdown('</div>', unsafe_allow_html=True)

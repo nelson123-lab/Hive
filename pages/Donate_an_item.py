@@ -5,8 +5,6 @@ from PIL import Image
 import base64
 import geocoder
 
-# from streamlit-geocoder import st_geocoder
-
 # Title
 st.title("Donate an Item")
 
