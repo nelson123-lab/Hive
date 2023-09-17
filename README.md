@@ -1,3 +1,5 @@
+<div align="center"><img src="data/HIVE.jpg" width="900"/></div>
+
 # Hive
 
 Hive is a user-friendly platform that connects individuals who want to make a difference in their community. With Hive, users can easily post and browse various types of donations, ranging from clothing and household items to food and electronics. 
