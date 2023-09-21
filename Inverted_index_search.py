@@ -74,8 +74,6 @@ flt_items = [item for item in items if not item.endswith('.txt')]
 
 if not results:
     print("No results found")
-elif len(results) == 1:
-    open_image_based_on_number(flt_items, results[0])
 else:
     for i in results:
         open_image_based_on_number(flt_items, i)
