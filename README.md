@@ -1,14 +1,14 @@
-# Community Aid Platform
+# HIVE
 
 ![HIVE](data/HIVE.jpg)
 
 **Inspiration**
 
-Community Aid Platform was born out of a desire to address the significant waste generated during apartment moves. Our project seeks to harness the potential of unwanted furniture and items, transforming them into valuable resources for others. We are driven by a deep belief in the power of sharing and community, recognizing that small acts of kindness can create a substantial positive impact. Join us in our mission to breathe new life into items and contribute to a more caring, sustainable world.
+HIVE was born out of a desire to address the significant waste generated during apartment moves. Our project seeks to harness the potential of unwanted furniture and items, transforming them into valuable resources for others. We are driven by a deep belief in the power of sharing and community, recognizing that small acts of kindness can create a substantial positive impact. Join us in our mission to breathe new life into items and contribute to a more caring, sustainable world.
 
 **What it does**
 
-The Community Aid Platform empowers users to seamlessly donate items they no longer require, including furniture, electronics, and clothing, to fellow community members. By facilitating the repurposing and sharing of these items, our platform significantly reduces waste, fosters a sense of community, and champions sustainability. We are committed to forging a more compassionate and environmentally conscious society.
+The HIVE empowers users to seamlessly donate items they no longer require, including furniture, electronics, and clothing, to fellow community members. By facilitating the repurposing and sharing of these items, our platform significantly reduces waste, fosters a sense of community, and champions sustainability. We are committed to forging a more compassionate and environmentally conscious society.
 
 **How we built it**
 
@@ -28,7 +28,7 @@ We are thrilled to announce that our Community Aid Platform emerged victorious i
 
 **What we learned**
 
-The Community Aid Platform provided a valuable learning opportunity for our team. Firstly, it exposed us to new technologies, allowing us to explore their capabilities and limitations. Secondly, it served as an enriching educational experience, deepening our understanding of cutting-edge technology and demonstrating our ability to translate this knowledge into a tangible project. This journey underscores our unwavering commitment to continuous growth and innovation.
+The HIVE provided a valuable learning opportunity for our team. Firstly, it exposed us to new technologies, allowing us to explore their capabilities and limitations. Secondly, it served as an enriching educational experience, deepening our understanding of cutting-edge technology and demonstrating our ability to translate this knowledge into a tangible project. This journey underscores our unwavering commitment to continuous growth and innovation.
 
 **What's next for Community Aid Platform**
 
