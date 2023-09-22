@@ -30,6 +30,6 @@ We are thrilled to announce that our Community Aid Platform emerged victorious i
 
 The HIVE provided a valuable learning opportunity for our team. Firstly, it exposed us to new technologies, allowing us to explore their capabilities and limitations. Secondly, it served as an enriching educational experience, deepening our understanding of cutting-edge technology and demonstrating our ability to translate this knowledge into a tangible project. This journey underscores our unwavering commitment to continuous growth and innovation.
 
-**What's next for Community Aid Platform**
+**What's next for HIVE**
 
 Our project has immense untapped potential that extends beyond our current implementation. In the future, we plan to enhance the platform by incorporating a mapping feature, enabling users to locate nearby donors. Additionally, we aspire to develop an analytical tool that can predict the likelihood of receiving specific donations in particular areas. Moreover, the introduction of a messenger chat feature will facilitate seamless communication between users, streamlining the process of completing transactions. Join us in shaping the future of the Community Aid Platform, where communities become more sustainable and compassionate with each interaction.
