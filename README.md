@@ -1,6 +1,6 @@
 # Community Aid Platform
 
-![Community Aid](data/HIVE.jpg)
+![HIVE](data/HIVE.jpg)
 
 **Inspiration**
 
@@ -21,6 +21,10 @@ Implementing novel technologies within the constraints of time proved to be a si
 **Accomplishments we're proud of**
 
 Our proudest achievement lies in successfully bringing our project to life despite the myriad challenges we encountered. We took on the hackathon's diverse challenges with determination and managed to address most of them effectively.
+
+**Winner of the SMU Hackathon - Best Use of MongoDB Atlas**
+
+We are thrilled to announce that our Community Aid Platform emerged victorious in the prestigious SMU Hackathon, securing the coveted title of "Best Use of MongoDB Atlas." This recognition underscores our team's exceptional technical prowess and innovative utilization of cutting-edge database technology. MongoDB Atlas played a pivotal role in enabling the seamless and secure storage of user data, ensuring the reliability and scalability of our platform.
 
 **What we learned**
 
