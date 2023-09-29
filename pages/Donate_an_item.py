@@ -4,11 +4,16 @@ import io
 from PIL import Image
 import base64
 import geocoder
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
 
 # Title
 st.title("Donate an Item")
 
-uri = "mongodb+srv://hasnainbharmal4:samu@donate.f4lgt98.mongodb.net/?retryWrites=true&w=majority"
+uri = os.getenv("API_KEY")
 # Connect to MongoDB
 client = MongoClient(uri)
 db = client["Donate_app"]

@@ -4,6 +4,11 @@ from PIL import Image
 import io
 import math
 import geocoder
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
 
 def calculate_distance(lat1, lon1, lat2, lon2):
     # Convert latitude and longitude from degrees to radians
@@ -24,9 +29,9 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
     return distance
 
-
+uri = os.getenv("API_KEY")
 # Connect to MongoDB (replace with your MongoDB connection details)
-client = MongoClient("mongodb://admin:admin@your_mongodb_host:27017/")
+client = MongoClient(uri)
 db = client["Donate_app"]
 users_collection = db["donations"]
 

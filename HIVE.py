@@ -5,6 +5,12 @@ import json
 from pymongo import MongoClient
 from streamlit_extras.switch_page_button import switch_page
 from streamlit.source_util import _on_pages_changed, get_pages
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
+
 
 DEFAULT_PAGE = "HIVE.py"
 SECOND_PAGE_NAME = "Dashboard"
@@ -70,7 +76,7 @@ st.image('HIVE.png', use_column_width=True)
 st.title("Welcome to Hive")
 # st.sidebar.success("Select a page")
 
-uri = "mongodb+srv://hasnainbharmal4:samu@donate.f4lgt98.mongodb.net/?retryWrites=true&w=majority"
+uri = os.getenv("API_KEY")
 # Connect to MongoDB
 client = MongoClient(uri)
 db = client["Donate_app"]
