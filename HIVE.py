@@ -70,7 +70,7 @@ st.image('HIVE.png', use_column_width=True)
 st.title("Welcome to Hive")
 # st.sidebar.success("Select a page")
 
-uri = "mongodb+srv://hasnainbharmal4:samu@donate.f4lgt98.mongodb.net/?retryWrites=true&w=majority"
+uri = ""
 # Connect to MongoDB
 client = MongoClient(uri)
 db = client["Donate_app"]
