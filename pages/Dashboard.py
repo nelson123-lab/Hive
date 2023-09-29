@@ -4,7 +4,7 @@ from PIL import Image
 import io
 from streamlit_extras.switch_page_button import switch_page
 
-uri = "mongodb+srv://admin:admin@donate.f4lgt98.mongodb.net/?retryWrites=true&w=majority"
+uri =""
 # Connect to MongoDB
 client = MongoClient(uri)
 db = client["Donate_app"]
